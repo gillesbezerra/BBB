@@ -17,32 +17,33 @@ body {
     color: white;
 }
 
-/* Camada escura mais leve */
+/* Camada geral leve */
 .overlay {
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0, 0, 0, 0.45);
     min-height: 100vh;
     padding-top: 40px;
 }
 
 /* Título estilo BBB */
 h1 {
-    font-size: 50px;
-    letter-spacing: 4px;
+    font-size: 55px;
+    letter-spacing: 6px;
     text-transform: uppercase;
     color: #ff1e1e;
     text-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
 }
 
-/* Caixa da enquete */
+/* Caixa rosinha neon */
 .enquete-box {
     width: 90%;
-    max-width: 900px;
+    max-width: 950px;
     margin: 40px auto;
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.6);
-    border: 2px solid #ff0000;
-    border-radius: 20px;
-    box-shadow: 0 0 30px #ff0000;
+    padding: 35px;
+    background: linear-gradient(135deg, rgba(255,0,120,0.35), rgba(255,0,80,0.25));
+    border: 2px solid #ff0066;
+    border-radius: 25px;
+    box-shadow: 0 0 35px #ff0066;
+    backdrop-filter: blur(6px);
     color: white;
 }
 
@@ -51,9 +52,9 @@ h1 {
     color: white !important;
 }
 
-/* Melhorar visibilidade dos nomes */
+/* Ajuste visual das imagens */
 .enquete-box img {
-    border-radius: 10px;
+    border-radius: 12px;
 }
 </style>
 
@@ -72,8 +73,8 @@ question_size="5"
 option_size="6"
 img_option_size="5"
 font="Roboto, sans-serif"
-primary_color="#ff0000"
-secondary_color="#ff0000"
+primary_color="#ff0066"
+secondary_color="#ff0066"
 height="1948">
 </ce:enquete>
 
