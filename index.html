@@ -6,83 +6,185 @@
 
 <style>
 body {
-    margin: 0;
-    padding: 0;
-    background-image: url('10884476.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    color: white;
+  margin: 0;
+  padding: 0;
+  background-image: url('10884476.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  color: white;
 }
 
 /* Camada geral leve */
 .overlay {
-    background: rgba(0, 0, 0, 0.45);
-    min-height: 100vh;
-    padding-top: 40px;
+  background: rgba(0, 0, 0, 0.45);
+  min-height: 100vh;
+  padding: 35px 12px 60px;
 }
 
 /* Título estilo BBB */
 h1 {
-    font-size: 55px;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    color: #ff1e1e;
-    text-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
+  font-size: 55px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #ff1e1e;
+  text-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
+  margin: 10px 0 18px;
+}
+
+/* Barra superior (AO VIVO + contador) */
+.topbar {
+  width: 90%;
+  max-width: 950px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.55);
+  border: 2px solid #ff0066;
+  box-shadow: 0 0 18px rgba(255, 0, 102, 0.8);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #ff2b2b;
+  box-shadow: 0 0 10px #ff2b2b;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; transform: scale(1); }
+  50%, 100% { opacity: 0.25; transform: scale(0.9); }
+}
+
+.countdown {
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.55);
+  border: 2px solid #ff0066;
+  box-shadow: 0 0 18px rgba(255, 0, 102, 0.6);
+  font-weight: 700;
+}
+
+.countdown strong {
+  color: #ffd1e6;
+  text-shadow: 0 0 12px rgba(255,0,102,0.6);
 }
 
 /* Caixa rosinha neon */
 .enquete-box {
-    width: 90%;
-    max-width: 950px;
-    margin: 40px auto;
-    padding: 35px;
-    background: linear-gradient(135deg, rgba(255,0,120,0.35), rgba(255,0,80,0.25));
-    border: 2px solid #ff0066;
-    border-radius: 25px;
-    box-shadow: 0 0 35px #ff0066;
-    backdrop-filter: blur(6px);
-    color: white;
+  width: 90%;
+  max-width: 950px;
+  margin: 18px auto 0;
+  padding: 35px;
+  background: linear-gradient(135deg, rgba(255,0,120,0.35), rgba(255,0,80,0.25));
+  border: 2px solid #ff0066;
+  border-radius: 25px;
+  box-shadow: 0 0 35px #ff0066;
+  backdrop-filter: blur(6px);
+  color: white;
 }
 
 /* Forçar texto da enquete a ficar branco */
 .enquete-box * {
-    color: white !important;
+  color: white !important;
 }
 
 /* Ajuste visual das imagens */
 .enquete-box img {
-    border-radius: 12px;
+  border-radius: 12px;
 }
 </style>
 
 </head>
 
 <body>
-
 <div class="overlay">
 
-<h1>🔥 CONFESSIONÁRIO 🔥</h1>
+  <h1>🔥 CONFESSIONÁRIO 🔥</h1>
 
-<div class="enquete-box">
+  <div class="topbar">
+    <div class="live-badge" aria-label="Ao vivo">
+      <span class="live-dot"></span>
+      <span>AO VIVO</span>
+    </div>
 
-<ce:enquete id="17386810"
-question_size="5"
-option_size="6"
-img_option_size="5"
-font="Roboto, sans-serif"
-primary_color="#ff0066"
-secondary_color="#ff0066"
-height="1948">
-</ce:enquete>
+    <div class="countdown" aria-label="Contagem regressiva">
+      ⏳ Encerra em: <strong id="countdownText">carregando...</strong>
+    </div>
+  </div>
 
-<script async type="text/javascript" src="https://www.criarenquete.com.br/user.js"></script>
+  <div class="enquete-box">
+
+    <ce:enquete id="17386810"
+      question_size="5"
+      option_size="6"
+      img_option_size="5"
+      font="Roboto, sans-serif"
+      primary_color="#ff0066"
+      secondary_color="#ff0066"
+      height="1948">
+    </ce:enquete>
+
+    <script async type="text/javascript" src="https://www.criarenquete.com.br/user.js"></script>
+  </div>
 
 </div>
 
-</div>
+<script>
+/**
+ * ✅ Ajuste o prazo aqui se quiser mudar data/hora.
+ * Formato recomendado com fuso do Brasil (-03:00):
+ * '2026-03-01T22:45:00-03:00'
+ */
+const deadlineISO = '2026-03-01T22:45:00-03:00';
+const deadline = new Date(deadlineISO);
 
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function updateCountdown() {
+  const el = document.getElementById('countdownText');
+  const now = new Date();
+  let diff = deadline.getTime() - now.getTime();
+
+  if (isNaN(deadline.getTime())) {
+    el.textContent = 'data inválida (confira o deadlineISO)';
+    return;
+  }
+
+  if (diff <= 0) {
+    el.textContent = 'VOTAÇÃO ENCERRADA';
+    return;
+  }
+
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / (24 * 3600));
+  const hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  const dPart = days > 0 ? `${days}d ` : '';
+  el.textContent = `${dPart}${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
 </body>
 </html>
