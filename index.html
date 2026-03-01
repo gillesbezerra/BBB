@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Enquete BBB</title>
+<title>Confessionário BBB</title>
 
 <style>
 body {
@@ -17,12 +17,14 @@ body {
     color: white;
 }
 
+/* Camada escura mais leve */
 .overlay {
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.55);
     min-height: 100vh;
     padding-top: 40px;
 }
 
+/* Título estilo BBB */
 h1 {
     font-size: 50px;
     letter-spacing: 4px;
@@ -31,15 +33,27 @@ h1 {
     text-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
 }
 
+/* Caixa da enquete */
 .enquete-box {
     width: 90%;
-    max-width: 800px;
+    max-width: 900px;
     margin: 40px auto;
     padding: 30px;
-    background: rgba(255, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.6);
     border: 2px solid #ff0000;
     border-radius: 20px;
     box-shadow: 0 0 30px #ff0000;
+    color: white;
+}
+
+/* Forçar texto da enquete a ficar branco */
+.enquete-box * {
+    color: white !important;
+}
+
+/* Melhorar visibilidade dos nomes */
+.enquete-box img {
+    border-radius: 10px;
 }
 </style>
 
@@ -58,8 +72,8 @@ question_size="5"
 option_size="6"
 img_option_size="5"
 font="Roboto, sans-serif"
-primary_color="#9f0500"
-secondary_color="#9f0500"
+primary_color="#ff0000"
+secondary_color="#ff0000"
 height="1948">
 </ce:enquete>
 
